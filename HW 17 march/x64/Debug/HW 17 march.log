@@ -1,0 +1,9 @@
+﻿  HW 17 march.cpp
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(7,2): error C4235: использовано нестандартное расширение: ключевое слово "__asm" данной архитектурой не поддерживается
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(10,3): error C2065: mov: необъявленный идентификатор
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(10,7): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "eax"
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(10,7): error C2065: eax: необъявленный идентификатор
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(11,3): error C2065: mov: необъявленный идентификатор
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(11,7): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "b"
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(11,10): error C2065: eax: необъявленный идентификатор
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(12,2): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"

@@ -1,0 +1,4 @@
+﻿  HW 17 march.cpp
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(5,21): warning C4101: result: неиспользованная локальная переменная
+C:\Users\ag629\source\repos\HW 17 march\HW 17 march\HW 17 march.cpp(83,6): warning C4101: j: неиспользованная локальная переменная
+  HW 17 march.vcxproj -> C:\Users\ag629\source\repos\HW 17 march\Debug\HW 17 march.exe
