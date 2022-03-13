@@ -58,66 +58,72 @@ void task2()
 void task4()
 {
 	const int n = 10;
-	int a[n] = {1,2,3,3,4,4,4,5,9,10};
-	int max = 1;
-	int first_inject = 0;
-	for (int i = 0; i < n; i++)
-	{
-		if (a[i] == a[i + 1])
-		{
-			int count = 1;
-			first_inject = i - 1;
-			int j = i;
-			while (a[j] == a[i])
-			{
-				count++;
-				++j;
-			}
-			i = j;
-			if (count > max)
-				max = count;
-		}
-	}
-	std::cout << first_inject << " " << max << '\n';
-	int count = 1;
-	int j;
-	//не работает 
+	int a[n] = {1,2,3,4,5,5,5,5,5,10};
+	int i = 0, max = 1, first_inject = 0, count = 1;
 	_asm
 	{
-		mov ecx, n
-		mov edx,1
+		mov ecx, 0
 		beg_1:
-			mov eax, a[ecx * 4]
-			mov ebx, a[ecx*4 + 4]
-				cmp eax,ebx
-				je je_1
-				je_1:
-		beg_2:
-			mov esi,ecx
-				mov eax, a[esi*4]
-				mov ebx, a[esi*4 + 4]
-						cmp eax, ebx
-							je je1
-							jne end_
-								je1:
-							inc count
-							inc esi
-							jmp beg_2
-								end_:
-							mov ecx, esi
-							mov eax, count
-							mov ebx,max
-							cmp eax, ebx
-								jg jg1
-								jg1:
-							mov edx,count
-			loop beg_1
-								mov max, edx
+			cmp ecx, n
+				jge end1_
+				mov eax, a[ecx*4]
+				mov ebx, a[ecx*4 + 4]
+					cmp eax, ebx 
+					mov count, 1
+					jne jne1
+						mov first_inject, ecx
+						mov ebx, ecx
+				beg_2:
+								mov eax, a[ebx*4]
+								cmp eax, a[ecx*4]
+									jne end2_
+									inc count
+									inc ebx
+									jmp beg_2
+				end2_:
+								mov ecx, ebx
+									mov ebx, count
+									cmp ebx, max
+										jle jle1
+											mov max, ebx
+										jle1:
+						inc ecx
+				jne1:
+					inc ecx
+				jmp beg_1
+				end1_:
 	}
-	std::cout << first_inject << " " << max << '\n';
+	std::cout <<  "index: " << first_inject << " length: " << max << '\n';
+}
+
+void task5()
+{
+	int a[] = { 1,1,1,2,2,3,4,5,6,6 };
+	int newA[6];
+	int b = 0;
+	for (int i = 0; i < 10; ++i) 
+	{
+		bool flag = true;
+		for (int j = 0; j <= b; ++j)
+		{
+			if (b == 0)
+			{
+				newA[b++] = a[i];
+				flag = false;
+				break;
+			}
+			else if (a[i] == newA[j]) 
+			{
+				flag = false;
+				break;
+			}
+		}
+		if (flag)
+			newA[b++] = a[i];
+	}
 }
 int main()
 {
-	task4();
+
 }
 
