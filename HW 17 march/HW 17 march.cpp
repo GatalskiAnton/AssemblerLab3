@@ -98,32 +98,55 @@ void task4()
 
 void task5()
 {
-	int a[] = { 1,1,1,2,2,3,4,5,6,6 };
+	const int n = 10;
+	int a[n] = { 1,2,2,2,2,3,4,5,6,6 };
 	int newA[6];
-	int b = 0;
-	for (int i = 0; i < 10; ++i) 
+	int b = 0,i = 0, flag = 1;
+	_asm
 	{
-		bool flag = true;
-		for (int j = 0; j <= b; ++j)
-		{
-			if (b == 0)
-			{
-				newA[b++] = a[i];
-				flag = false;
-				break;
-			}
-			else if (a[i] == newA[j]) 
-			{
-				flag = false;
-				break;
-			}
-		}
-		if (flag)
-			newA[b++] = a[i];
+		
+		mov ecx, 0//i
+		mov eax, b
+		beg_1:
+		cmp ecx, n
+			jge end1_
+			//начало тела первого цикла
+			mov flag, 1
+			mov ebx, 0//j
+						beg_2:
+							cmp ebx, eax
+							jg end2_
+							//начало тела второго цикла
+							mov edx, a[ecx*4]
+									cmp eax, 0
+										jne jne1
+										mov newA[eax*4], edx
+										inc eax
+										mov flag,0
+										jmp end2_
+									jne1:
+									
+									cmp edx, newA[ebx*4]
+										jne jne2
+										mov flag,0
+										jmp end2_
+										jne2:
+							inc ebx
+							jmp beg_2
+							//конец тела второго цикла
+								end2_:
+							cmp flag,1
+								jne jne3
+								mov newA[eax*4], edx
+								inc eax
+								jne3:
+				//конец тела первого цикла
+				inc ecx
+				jmp beg_1
+					end1_:
 	}
 }
 int main()
 {
 
 }
-
